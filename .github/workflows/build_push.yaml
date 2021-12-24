@@ -27,4 +27,4 @@ jobs:
           build
     - name: Docker push
       run: |
-        docker push bookstorecw1/payment-svc:latest
+        docker push bookstorecw1/payment-service:latest
