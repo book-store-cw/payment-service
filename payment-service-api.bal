@@ -1,11 +1,20 @@
 import ballerina/http;
 import ballerina/log;
 
-// By default, Ballerina exposes an HTTP service via HTTP/1.1.
+
+configurable string SHIPPING_SERVICE = ?;
+
+
 service /hello on new http:Listener(9090) {
 
-    // Resource functions are invoked with the HTTP caller and the incoming request as arguments.
-    resource function get sayHello(http:Caller caller, http:Request req) {
+    resource function get sayHello(http:Caller caller, http:Request req) returns error? {
+        http:Client hrService = check new (SHIPPING_SERVICE);
+
+        // TODO: Add proper response
+        http:Response shippingServiceResponse = <http:Response>check hrService->get("/sayHello");
+        string payload = <string>check shippingServiceResponse.getTextPayload();
+
+
         // Send a response back to the caller.
         var result = caller->respond("Hello, from the payment service!");
         if (result is error) {
