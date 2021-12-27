@@ -2,13 +2,13 @@ import ballerina/http;
 import ballerina/log;
 
 
-configurable string SHIPPING_SERVICE = ?;
+// configurable string SHIPPING_SERVICE = ?;
 
 
 service /hello on new http:Listener(9090) {
 
     resource function get sayHello(http:Caller caller, http:Request req) returns error? {
-        // http:Client shippingService = check new (SHIPPING_SERVICE);
+        // http:Client shippingService = check new ();
 
         // // TODO: Add proper response
         // http:Response shippingServiceResponse = <http:Response>check shippingService->get("/sayHello");
