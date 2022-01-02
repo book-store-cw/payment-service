@@ -1,5 +1,6 @@
 import ballerina/http;
 import ballerina/log;
+import ballerina/os;
 
 final string shippingServiceUrl = os:getEnv("SHIPPING_SERVICE_URL");
 
